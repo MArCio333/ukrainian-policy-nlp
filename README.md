@@ -6,7 +6,7 @@ NLP pipeline for topic modeling and clustering of Ukrainian-language policy docu
 
 ## What it does
 
-This pipeline processes a corpus of Ukrainian-language PDF documents and produces:
+This pipeline processes a corpus of Ukrainian-language PDF and DOCX documents and produces:
 
 - **Topic modeling** — LDA-based extraction of latent topics across the corpus
 - **Document clustering** — K-Means grouping of documents by content similarity
@@ -32,15 +32,19 @@ It was built to analyze policy documents from Ukrainian government sources, wher
 ## Requirements
 
 ```
-stanza
-pdfplumber
-scikit-learn
+stanza==1.11.1
+pdfplumber==0.11.9
+scikit-learn==1.8.0
+numpy==2.4.2
+scipy==1.17.1
+tqdm==4.67.3
+docx==0.2.4
 ```
 
 Install dependencies:
 
 ```bash
-pip install stanza pdfplumber scikit-learn
+pip install -r requirements.txt
 ```
 
 The Ukrainian Stanza model will be downloaded automatically on first run if not already present.
@@ -50,14 +54,10 @@ The Ukrainian Stanza model will be downloaded automatically on first run if not 
 ## Usage
 
 ```bash
-python ua_policy_nlp.py --folder /path/to/your/pdf/folder
+python ua_policy_nlp.py --folder /path/to/your/documents
 ```
 
-Output is printed as JSON to stdout. Redirect to a file if needed:
-
-```bash
-python ua_policy_nlp.py --folder /path/to/pdfs > results.json
-```
+The script processes all `.pdf` and `.docx` files found in the folder. Output is saved as `results.json` in the same folder and also printed to stdout.
 
 ### Parameters (edit at top of script)
 
@@ -68,6 +68,17 @@ python ua_policy_nlp.py --folder /path/to/pdfs > results.json
 | `N_TOP_WORDS` | 40 | Words per topic |
 | `MIN_DF` | 3 | Minimum document frequency for TF-IDF |
 | `MAX_DF` | 0.85 | Maximum document frequency for TF-IDF |
+| `MAX_FEATURES` | 5000 | Maximum vocabulary size for vectorizer |
+
+---
+
+## Stopwords
+
+The pipeline applies three layers of stopword filtering:
+
+- **Ukrainian function words** — pronouns, conjunctions, prepositions, auxiliary verbs
+- **English function words** — for mixed-language documents
+- **Legal boilerplate** — high-frequency terms specific to Ukrainian administrative documents (закон, стаття, кабінет, міністр, etc.) that appear across all documents and carry no discriminative value
 
 ---
 
@@ -75,7 +86,7 @@ python ua_policy_nlp.py --folder /path/to/pdfs > results.json
 
 ```json
 {
-  "filenames": ["doc1.pdf", "doc2.pdf"],
+  "filenames": ["doc1.pdf", "doc2.docx"],
   "topics": [["term1", "term2", ...], ...],
   "clusters": [0, 1, 0, 2, ...],
   "phrases": ["key phrase one", "key phrase two", ...],
@@ -91,14 +102,17 @@ python ua_policy_nlp.py --folder /path/to/pdfs > results.json
 - `phrases` — top 50 bigrams and trigrams by TF-IDF score across corpus
 - `style` — corpus-level style indicators; modal verbs tracked are повинен, має, може, слід, необхідно
 
+See `sample_output.json` for a real example with annotated topic labels.
+
 ---
 
 ## Notes
 
-- Only `.pdf` files are processed; other formats in the folder are ignored
+- Both `.pdf` and `.docx` files are processed; other formats are ignored
 - Documents that fail to extract text are skipped with a warning
 - Text chunks over 20,000 characters are skipped to avoid Stanza memory issues on very large pages
 - The pipeline is CPU-only (`use_gpu=False`)
+- Progress bars show processing status for each pipeline stage
 
 ---
 
