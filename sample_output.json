@@ -1,0 +1,115 @@
+{
+  "_note": "Sample output from a corpus of 91 Ukrainian Ministry of Digital Transformation policy documents. Filenames anonymized.",
+  "filenames": [
+    "doc_001.pdf",
+    "doc_002.pdf",
+    "doc_003.pdf",
+    "doc_004.pdf",
+    "doc_005.pdf",
+    "doc_006.pdf",
+    "doc_007.pdf",
+    "doc_008.pdf",
+    "doc_009.pdf",
+    "doc_010.pdf"
+  ],
+  "topics": [
+    {
+      "_label": "AI governance and legal framework",
+      "terms": [
+        "security", "design", "operation", "user", "deployment",
+        "responsible ai", "system", "national", "international",
+        "legal", "information", "law", "framework", "ukraine",
+        "application", "terms", "європейський союз"
+      ]
+    },
+    {
+      "_label": "Digital transformation — Ministry programs",
+      "terms": [
+        "міністерство цифровати", "цифровати трансформація",
+        "трансформація україна", "система ші", "дія",
+        "розвиток", "проект", "послуга", "програма",
+        "електронний", "державний", "громадська ради", "ші"
+      ]
+    },
+    {
+      "_label": "Regulatory consultation process",
+      "terms": [
+        "контактні дані", "мета розроблення", "виноситься на",
+        "про запланований", "рік консультація", "ai act",
+        "електронний послуга", "портал дія", "мобільний додатка",
+        "державний таємниця", "мета прийняття"
+      ]
+    },
+    {
+      "_label": "Public information access and requests",
+      "terms": [
+        "публічний інформація", "доступ до", "запит",
+        "розгляд запит", "задоволено відмовлено",
+        "громадянин юридичний", "особа громадянин",
+        "інформація надіслати", "категорія запитувач"
+      ]
+    },
+    {
+      "_label": "AI risk and data protection",
+      "terms": [
+        "artificial intelligence", "ai system", "risk",
+        "privacy", "security", "monitoring", "protection",
+        "legal", "processing", "rights", "data", "code"
+      ]
+    },
+    {
+      "_label": "Grant programs and R&D funding",
+      "terms": [
+        "грантова програма", "фінансовий підтримка",
+        "укладений договір", "статутне капіталу",
+        "грантов конкурст", "розробник", "заявка подани",
+        "отримати позитивний", "публічний інвестицій"
+      ]
+    },
+    {
+      "_label": "International cooperation and IT infrastructure",
+      "terms": [
+        "міжнародна", "співробітництво між", "іт інфраструктури",
+        "угода про", "моніторинг виконання", "державний сервіс",
+        "освітни програма", "інноваційні", "масштабування", "виставка"
+      ]
+    },
+    {
+      "_label": "Anti-corruption risk assessment",
+      "terms": [
+        "корупційний ризик", "запобігання корупція",
+        "антикорупційний програма", "оцінювання корупційний",
+        "національний агентство", "декларування",
+        "управління корупційний", "роботи група", "засідання роботи"
+      ]
+    }
+  ],
+  "clusters": [1, 1, 7, 6, 5, 2, 5, 8, 6, 6],
+  "phrases": [
+    "громадська ради",
+    "система ші",
+    "цифровати трансформація",
+    "міністерство цифровати",
+    "трансформація україна",
+    "міністерство цифровати трансформація",
+    "цифровати трансформація україна",
+    "бюджетний програма",
+    "доступ до",
+    "персональний дані",
+    "відповідно до",
+    "закон україна",
+    "публічний інформація",
+    "закон україна про",
+    "кабінет міністр",
+    "електронний ідентифікація",
+    "корупційний ризик",
+    "адміністративний послуга",
+    "кабінет міністр україна",
+    "організація та проведення"
+  ],
+  "style": {
+    "avg_sentence_length": 39.4,
+    "total_modal_verbs": 148,
+    "_note": "Modal verbs tracked: повинен, має, може, слід, необхідно. High avg sentence length (39 words) reflects dense administrative register."
+  }
+}
