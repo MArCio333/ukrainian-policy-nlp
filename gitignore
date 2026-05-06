@@ -10,8 +10,9 @@ build/
 # Stanza models (large, downloaded at runtime)
 stanza_resources/
 
-# PDF corpus (data not included in repo)
+# Corpus files (data not included in repo)
 *.pdf
+*.docx
 
 # Output files
 *.json
