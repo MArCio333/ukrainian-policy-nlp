@@ -3,3 +3,5 @@ pdfplumber==0.11.9
 scikit-learn==1.8.0
 numpy==2.4.2
 scipy==1.17.1
+docx==0.2.4
+tqdm==4.67.3
