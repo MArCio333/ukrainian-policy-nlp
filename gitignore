@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+
+# Stanza models (large, downloaded at runtime)
+stanza_resources/
+
+# PDF corpus (data not included in repo)
+*.pdf
+
+# Output files
+*.json
+!sample_output.json
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
