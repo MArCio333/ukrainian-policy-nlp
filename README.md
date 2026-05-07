@@ -13,8 +13,6 @@ This pipeline processes a corpus of Ukrainian-language PDF and DOCX documents an
 - **Key phrase extraction** — TF-IDF ranked n-grams (bigrams and trigrams)
 - **Style metrics** — average sentence length and modal verb frequency per document
 
-It was built to analyze policy documents from Ukrainian government sources, where accurate morphological analysis of Ukrainian is essential.
-
 ---
 
 ## Why these tools
