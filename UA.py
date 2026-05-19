@@ -73,7 +73,7 @@ def extract_text_from_pdf(path: str) -> str:
                 if content:
                     text.append(content)
     except Exception as e:
-        print(f"⚠️ PDF error {path}: {e}")
+        print(f"PDF error {path}: {e}")
     return "\n".join(text)
 
 
@@ -85,7 +85,7 @@ def extract_text_from_docx(path: str) -> str:
             if para.text:
                 text.append(para.text)
     except Exception as e:
-        print(f"⚠️ DOCX error {path}: {e}")
+        print(f"DOCX error {path}: {e}")
     return "\n".join(text)
 
 
@@ -108,7 +108,7 @@ def load_documents(folder_path: str):
             texts.append(text)
             filenames.append(str(path))
 
-    print(f"✅ Loaded {len(texts)} documents")
+    print(f"Loaded {len(texts)} documents")
     return texts, filenames
 
 # -----------------------------
@@ -253,7 +253,7 @@ def compute_style_metrics(text: str) -> Dict:
 def corpus_style(texts: List[str]) -> Dict:
     metrics = []
 
-    for text in tqdm(texts, desc="✍️ Style analysis"):
+    for text in tqdm(texts, desc="Style analysis"):
         metrics.append(compute_style_metrics(text))
 
     return {
@@ -265,33 +265,33 @@ def corpus_style(texts: List[str]) -> Dict:
 # MAIN PIPELINE
 # -----------------------------
 def analyze_corpus(folder_path: str) -> Dict:
-    print("\n🚀 Starting analysis...\n")
+    print("\n Starting analysis...\n")
 
     start = time.time()
 
-    print("📂 Step 1: Loading")
+    print(" Step 1: Loading")
     texts, filenames = load_documents(folder_path)
 
-    print("\n🧹 Step 2: Preprocessing")
+    print("\n Step 2: Preprocessing")
     processed = preprocess_corpus(texts)
 
-    print("\n📊 Step 3: Vectorization")
+    print("\n Step 3: Vectorization")
     X_tfidf, tfidf_vec = compute_tfidf(processed)
     X_counts, count_vec = compute_counts(processed)
 
-    print("\n🧠 Step 4: Topic modeling")
+    print("\n Step 4: Topic modeling")
     topics = extract_topics(X_counts, count_vec)
 
-    print("\n📌 Step 5: Clustering")
+    print("\n Step 5: Clustering")
     clusters = cluster_documents(X_tfidf)
 
-    print("\n🧩 Step 6: Phrase extraction")
+    print("\n Step 6: Phrase extraction")
     phrases = extract_phrases(processed)
 
-    print("\n✍️ Step 7: Style analysis")
+    print("\n Step 7: Style analysis")
     style = corpus_style(texts)
 
-    print(f"\n✅ Done in {time.time() - start:.2f} seconds\n")
+    print(f"\n Done in {time.time() - start:.2f} seconds\n")
 
     return {
         "filenames": filenames,
